@@ -1,0 +1,29 @@
+#clase llamada auto(marca,velocidad), usando property  para obtener velocidad como atributo priVADO, USAR SETTER  PARA VALIDAR
+#que la velocidad no sea menor que 0 ni mayor que 300
+#usar class que reciba un texto con el formato ;
+class Auto:
+    def __init__(self,marca,velocidad):
+        self.marca=marca
+        self._velocidad =velocidad
+        
+    @property
+    def velocidad (self):
+        return self._velocidad
+    
+    @velocidad.setter
+    def velocidad (self,nVelocidad):
+        if nVelocidad < 0 or nVelocidad >300:
+            raise ValueError("Velocidad no valida.")
+    
+    @classmethod
+    def cadena (cls,texto):
+        parte=texto.split(';')
+        marca=parte[0].strip().title()
+        velocidad =int(parte[1].strip())
+        return cls(marca,velocidad)
+        
+auto = Auto.cadena("Mercedes ; 100 ")
+print(auto.marca)
+print(auto.velocidad)
+        
+    
